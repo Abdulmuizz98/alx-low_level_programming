@@ -1,9 +1,8 @@
 #include <stdio.h>
 /*
- * main - entry point
- *
- * Description: Prints a string set
- * Return: 0
+ * main - Entry point
+ * Prints a string set
+ * Return: return 0 after program execution
  *
  */
 int main(void)
