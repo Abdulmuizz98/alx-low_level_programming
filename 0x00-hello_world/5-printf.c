@@ -2,6 +2,7 @@
 /*
  * main - entry point
  *
+ * Description: Prints a string set
  * Return: 0
  *
  */
