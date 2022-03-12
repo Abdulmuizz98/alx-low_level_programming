@@ -14,7 +14,6 @@ int main(void)
 	{
 		if (first == 'e' || first == 'q')
 		{
-			continue;
 		}
 		else
 		{
