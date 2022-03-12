@@ -21,7 +21,7 @@ int main(void)
 	{
 		putchar(second);
 		second++;
-	}	
+	}
 	putchar('\n');
 	return (0);
 }
