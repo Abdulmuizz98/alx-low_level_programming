@@ -8,20 +8,20 @@
  */
 int main(void)
 {
-	char first = '0';
-	char start = '1';
+	int first = 0;
+	int start = 1;
 
-	while (first <= '9')
+	while (first <= 9)
 	{
 		putchar(first);
 		putchar(start);
-		if (first != '8' && start != '9')
+		if (first != 8 && start != 9)
 		{
 			putchar(',');
 			putchar(' ');
 		}
 		start++;
-		if (start == '9')
+		if (start == 9)
 		{
 			first++;
 			start = first + 1;
