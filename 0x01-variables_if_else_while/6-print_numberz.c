@@ -8,9 +8,9 @@
  */
 int main(void)
 {
-	int first = 0;
+	int first = 48;
 
-	while (first <= 9)
+	while (first <= 57)
 	{
 		putchar(first);
 		first++;
