@@ -12,13 +12,9 @@ int main(void)
 
 	while (first <= 57)
 	{
-		if (first == 57)
-		{
-			putchar(first);
-		}
-		else
-		{
-			putchar(first);
+		putchar(first);
+		if (first != 57)
+		{	
 			putchar(',');
 			putchar(' ');
 		}
