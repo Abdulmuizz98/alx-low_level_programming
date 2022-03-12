@@ -9,11 +9,18 @@
 int main(void)
 {
 	char first = 'a';
+
 	while (first <= 'z')
 	{
-		if (first == 'e' || first == 'q') 
+		if (first == 'e' || first == 'q')
+		{
 			continue;
-		putchar(first);
+		}
+		else
+		{
+
+			putchar(first);
+		}
 		first++;
 	}
 	putchar('\n');
