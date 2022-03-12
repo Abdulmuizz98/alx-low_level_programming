@@ -10,16 +10,17 @@ int main(void)
 {
 	int i,j,k;
 
-	for (i = 48; i <= 57; i)
+	for (i = 48; i <= 57; i++)
 	{
-		for (j = 49; j <= 57;)
+		putchar(i);
+		for (j = i+1; j <= 57;j++)
 		{
-			for (k = 50; k <=57;)
+			for (k = j+1; k <=57; k++)
 			{
 				putchar(i);
 				putchar(j);
 				putchar(k);
-				if( k == 57 && j == 56 && i == 55)
+				if(k == 57 && j == 56 && i == 55)
 				{
 					break;
 				}
@@ -28,27 +29,6 @@ int main(void)
 					putchar(',');
 					putchar(' ');
 				}
-				/*Increment Second from third */
-				if (k == 57)
-				{
-					j++;
-					k = j + 1;
-				}
-				else
-				{
-					k++;
-				}
-				/*Increment First from Second*/
-				if (j == 57)
-				{
-					i++;
-					j = i + 1;
-				}
-				else
-				{
-					j++;
-				}
-
 			}
 		}
 	}
