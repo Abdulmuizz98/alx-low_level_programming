@@ -15,17 +15,17 @@ int main(void)
 	{
 		putchar(first);
 		putchar(start);
-		if (first != 56 && start != 57)
-		{
-			putchar(',');
-			putchar(' ');
-			
-		}
-		else
+		if (first == 56 && start == 57)
 		{
 			break;
 		}
-		/* Check if we got to 9 */
+		else
+		{
+			putchar(',');
+			putchar(' ');
+		}
+
+		/* Updating start. Check if we got to 9 */
 		if (start == 57)
 		{
 			first++;
