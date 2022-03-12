@@ -19,12 +19,17 @@ int main(void)
 		{
 			putchar(',');
 			putchar(' ');
+			break;
 		}
-		start++;
+		/* Check if we got to 9 */
 		if (start == 57)
 		{
 			first++;
 			start = first + 1;
+		}
+		else
+		{
+			start++;
 		}
 	}
 	putchar('\n');
