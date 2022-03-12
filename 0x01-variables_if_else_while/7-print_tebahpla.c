@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - print all the letters of the english alphabet backwards 
+ * main - print all the letters of the english alphabet backwards
  * DESCRIPTION: use the putchar method to print all the
  * letters of the english alphabets backwards.
  *
@@ -15,5 +15,6 @@ int main(void)
 		putchar(first);
 		first--;
 	}
+	putchar('\n');
 	return (0);
 }
