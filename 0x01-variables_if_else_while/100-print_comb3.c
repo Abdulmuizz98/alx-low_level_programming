@@ -19,6 +19,10 @@ int main(void)
 		{
 			putchar(',');
 			putchar(' ');
+			
+		}
+		else
+		{
 			break;
 		}
 		/* Check if we got to 9 */
