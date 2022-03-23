@@ -2,7 +2,7 @@
 
 /**
  * main - Print the word "Holberton"
- * 
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
