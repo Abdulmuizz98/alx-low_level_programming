@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * * main - Print the word "Holberton"
- * *
- * * Return: Always 0 (Success)
- * */
-
+ * main - Print the word "Holberton"
+ * 
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
 	int i;
