@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * *_strcat - concatenates @src to @dest
  * @src: the source string to append to @dest
@@ -7,7 +6,6 @@
  * 
  * Return:pointer to the resulting string
  */
-
 char *_strcat(char *dest, char *src)
 {
 	int index = 0;
