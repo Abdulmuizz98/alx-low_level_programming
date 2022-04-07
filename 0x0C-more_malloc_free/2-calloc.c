@@ -10,10 +10,16 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
+	void *temp;
 	void *s;
+	int i;
 
 	s = calloc(nmemb, size);
 	if (nmemb == 0 || size == 0)
 		return (NULL);
+	if (s == NULL)
+		return (NULL);
+	for (i = 0; i < (nmemb * size); i++)
+		temp[i] = 0;
 	return (s);
 }
