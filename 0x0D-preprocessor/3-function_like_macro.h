@@ -3,6 +3,7 @@
 /**
  * ABS - defines a function-like macro that
  * computes the absolute value of a number
+ * @x: number whose absolute is computed
  */
 #define ABS(x) ((x) < 0 ? (-x) : (x))
 
