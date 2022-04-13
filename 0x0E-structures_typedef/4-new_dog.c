@@ -1,5 +1,21 @@
 #include "dog.h"
 #include <stdlib.h>
+int _strlen(char *str);
+/**
+ *  * _strlen - Finds the length of a string.
+ *   * @str: The string to be measured.
+ *    *
+ *     * Return: The length of the string.
+ *      */
+int _strlen(char *str)
+{
+	int len = 0;
+
+	while (*str++)
+		len++;
+
+	return (len);
+}
 /**
  * _strcopy - Copies a string pointed to by src, including the
  *            terminating null byte, to a buffer pointed to by dest.
@@ -30,10 +46,26 @@ char *_strcopy(char *dest, char *src)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	if (name == NULL || age < 0 || owner == NULL)
+		return (NULL);
 	dog_t *d = malloc(sizeof(dog_t));
 
 	if (d == NULL)
 		return (NULL);
+	d->name = malloc(sizeof(char) * (_strlen(name) + 1));
+	if (d->name == NULL)
+	{
+		free(d);
+		return (NULL);
+	}
+
+	d->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
+	if (d->owner == NULL)
+	{
+		free(d->name);
+		free(d);
+		return (NULL);
+	}
 
 	d->name = _strcopy(d->name, name);
 	d->age = age;
