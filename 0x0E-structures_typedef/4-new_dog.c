@@ -6,7 +6,7 @@ int _strlen(char *str);
  *   * @str: The string to be measured.
  *    *
  *     * Return: The length of the string.
- *      */
+ */
 int _strlen(char *str)
 {
 	int len = 0;
