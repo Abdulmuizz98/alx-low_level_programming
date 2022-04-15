@@ -20,9 +20,9 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		if (i + 1 == n)
 			printf("%d\n", j);
 		else if (separator == NULL)
-			printf("%d ", j);
+			printf("%d", j);
 		else
-			printf("%d%s ", j, separator);
+			printf("%d%s", j, separator);
 	}
 	va_end(list);
 }
