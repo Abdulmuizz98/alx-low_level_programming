@@ -4,7 +4,7 @@
  * sum_them_all - function that sums up all arguments.
  * @n: size of the arguments.
  * @...: variable number of arguments to be summed up.
-
+ *
  * Return: if n is 0, 0;
  * otherwise the sum of the arguments excluding the
  * first (denoting the size).
