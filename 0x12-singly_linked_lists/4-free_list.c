@@ -4,7 +4,7 @@
 /**
  * free_list - frees a list.
  * @head: the pointer to the head of the list
- * 
+ *
  * Return: Nothing.
  */
 void free_list(list_t *head)
