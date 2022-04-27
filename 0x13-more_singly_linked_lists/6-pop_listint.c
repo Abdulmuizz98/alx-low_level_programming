@@ -10,12 +10,15 @@
 int pop_listint(listint_t **head)
 {
 	int n;
+	listint_t *tmp;
 
 	/*Save the int that is to be popped*/
 	if (*head == NULL) /* If list is empty return 0 */
 		return (0);
 	n = (*head)->n;
 	/* Point the pointer to the head pointer to the head's next node*/
-	*head = (*head)->next;
+	tmp = (*head)->next;
+	free(*head);
+	*head = tmp;
 	return (n);
 }
