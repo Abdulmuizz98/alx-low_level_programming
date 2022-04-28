@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * binary_to_unint - converts binary to decimal
+ * binary_to_uint - converts binary to decimal
  * @b: the string containing the binary representation
  *
  * Return: if successful, the decimal equivalent;
@@ -14,7 +14,7 @@ unsigned int binary_to_uint(const char *b)
 	int exp = 1;
 	int len = 0;
 
-	if (b == NULL) 
+	if (b == NULL)
 		return (0);
 	/* Track the length of te string b */
 	while (b[len] != '\0')
@@ -25,7 +25,7 @@ unsigned int binary_to_uint(const char *b)
 	}
 	len--;
 	/* convert each bit from the end of the string to their decimal */
-       	while (len >= 0)
+	while (len >= 0)
 	{
 		decimal += (b[len] - 48) * exp;
 		exp = exp * 2;
