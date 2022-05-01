@@ -11,25 +11,11 @@ void print_bin(unsigned long int num);
  */
 void print_binary(unsigned long int n)
 {
-	if (n == 0)
-		_putchar('0');
-	else
-		print_bin(n);
-}
-/**
- * print_bin - helper function to print non zero binaries.
- * @num: the non zero integer to be converted to binary
- *
- * Return: Nothing.
- */
-void print_bin(unsigned long int num)
-{
 	unsigned long int rem;
+	if (n > 0)
+		print_binary(n >> 1);
 
-	if (num == 0)
-		return;
-	rem = modulo(num);
-	print_bin(num >> 1);
+	rem = modulo(n);
 	_putchar(rem + '0');
 }
 /**
@@ -40,5 +26,5 @@ void print_bin(unsigned long int num)
  */
 int modulo(unsigned long int num)
 {
-	return (num - ((num >> 1) << 1));
+	return (num & 1);
 }
