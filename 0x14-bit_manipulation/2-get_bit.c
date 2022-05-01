@@ -16,6 +16,8 @@ int get_bit(unsigned long int n, unsigned int index)
 	int rem = 0;
 	node *head = NULL;
 
+	if (n == 0)
+		return (0);
 	while (n != 0)
 	{
 		rem = n % 2;
