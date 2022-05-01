@@ -1,5 +1,17 @@
 #ifndef MAIN_H
 #define MAIN_H
+/**
+ * struct list - singly linked list
+ * @n: integer data
+ * @next: pointer to the next node in the list
+ *
+ * Description: singly linked list for the bitwise tasks
+ */
+typedef struct list
+{
+	int n;
+	struct list *next; 
+} node;
 int _putchar(char c);
 unsigned int binary_to_uint(const char *b);
 void print_binary(unsigned long int n);
