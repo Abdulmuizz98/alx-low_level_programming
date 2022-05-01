@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * set_bit - sets the bit at an index
+ * set_bit - sets the bit at an index to 1
  * @n: the number to be checked
  * @index: the index to be fetched
  *
