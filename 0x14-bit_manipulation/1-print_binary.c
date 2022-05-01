@@ -12,6 +12,7 @@ void print_bin(unsigned long int num);
 void print_binary(unsigned long int n)
 {
 	unsigned long int rem;
+	
 	if (n > 1)
 		print_binary(n >> 1);
 
