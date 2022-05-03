@@ -8,20 +8,18 @@ void times_table(void)
 
 	for (i = 0; i < 10; i++)
 	{
-		j = 0;
+		_putchar('0');
+		j = 1;
 		while (j < 10)
 		{
+			_putchar(',');
+			_putchar(' ');
 			num = i * j;
 			if ((num / 10) == 0)
 				_putchar(' ');
 			else
 				_putchar((num / 10) + '0');
 			_putchar((num % 10) + '0');
-			if (j != 9)
-			{
-				_putchar(',');
-				_putchar(' ');
-			}
 			j++;
 		}
 		_putchar('\n');
