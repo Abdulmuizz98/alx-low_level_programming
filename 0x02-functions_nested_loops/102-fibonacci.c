@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdio.h>
-unsigned int fibonacci(int place);
+unsigned long int fibonacci(int place);
 /**
  * main - prints the sum of multiples of 3 and 5 before 1024
  *
@@ -12,10 +12,10 @@ int main(void)
 
 	while (num < 50)
 	{
-		printf("%u, ", fibonacci(num));
+		printf("%lu, ", fibonacci(num));
 		num++;
 	}
-	printf("%u", fibonacci(num));
+	printf("%lu", fibonacci(num));
 	return (0);
 }
 /**
@@ -24,12 +24,12 @@ int main(void)
  *
  * Return: the fibonacci value
  */
-unsigned int fibonacci(int place)
+unsigned long int fibonacci(int place)
 {
 	int i = 3;
-	int num1 = 1;
-	int num2 = 2;
-	int sum;
+	unsigned long int num1 = 1;
+	unsigned long int num2 = 2;
+	unsigned long int sum;
 
 	if (place == 1)
 		return (num1);
