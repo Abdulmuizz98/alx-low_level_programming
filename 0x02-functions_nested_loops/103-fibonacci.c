@@ -2,7 +2,7 @@
 #include <stdio.h>
 unsigned long int fibonacci(int place);
 /**
- * main - prints the sum of multiples of 3 and 5 before 1024
+ * main - prints even fibonacci terms
  *
  * Return: Nothing.
  */
@@ -13,8 +13,8 @@ int main(void)
 
 	while (fibonacci(num) <= 4000000)
 	{
-		if ((fibonacci(num) % 2) == 0)
-		      sum += fibonacci(num);	
+		if (fibonacci(num) % 2 == 0)
+			sum += fibonacci(num);
 		num++;
 	}
 	printf("%lu\n", sum);
