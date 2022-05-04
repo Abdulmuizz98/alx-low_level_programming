@@ -15,7 +15,7 @@ int main(void)
 		printf("%lu, ", fibonacci(num));
 		num++;
 	}
-	printf("%lu", fibonacci(num));
+	printf("%lu\n", fibonacci(num));
 	return (0);
 }
 /**
