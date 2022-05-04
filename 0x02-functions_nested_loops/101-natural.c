@@ -10,7 +10,7 @@ int main(void)
 {
 	int num;
 
-	num = print_multiples_3_5(1024);
+	num = print_multiples_3_5(102424);
 	printf("%u", num);
 
 	return (0);
@@ -28,9 +28,9 @@ unsigned int print_multiples_3_5(int num)
 
 	while (i < num)
 	{
-		if ((num % 3) == 0 || (num % 5) == 0)
-			sum += num;
-		num++;
+		if ((i % 3) == 0 || (i % 5) == 0)
+			sum += i;
+		i++;
 	}
 	return (sum);
 }
