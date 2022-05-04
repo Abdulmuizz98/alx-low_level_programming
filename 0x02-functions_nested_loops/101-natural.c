@@ -3,7 +3,7 @@
 unsigned int print_multiples_3_5(int num);
 /**
  * main - prints the sum of multiples of 3 and 5 before 1024
- * 
+ *
  * Return: Nothing.
  */
 int main(void)
@@ -11,7 +11,7 @@ int main(void)
 	int num;
 
 	num = print_multiples_3_5(1024);
-	printf("%u", num);
+	printf("%u\n", num);
 
 	return (0);
 }
