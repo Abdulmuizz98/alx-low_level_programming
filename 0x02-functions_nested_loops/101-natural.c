@@ -10,7 +10,7 @@ int main(void)
 {
 	int num;
 
-	num = print_multiples_3_5(102424);
+	num = print_multiples_3_5(1024);
 	printf("%u", num);
 
 	return (0);
