@@ -19,7 +19,7 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		dprintf(2, "Usage: %s %s %s\n", av[0], av[1], av[2]);
+		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	res = copy(av[1], av[2]);
