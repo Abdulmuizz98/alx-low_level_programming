@@ -61,6 +61,8 @@ int copy(const char *file_from, const char *file_to)
 	fd_read = open(file_from, O_RDONLY);
 
 	buf = malloc(sizeof(char) * 1024);
+	if (buf == NULL)
+		return (-2);
 	while ((read_bytes = read(fd_read, buf, 1024)) != 0)
 	{
 		if (read_bytes == -1 || fd_read == -1)
