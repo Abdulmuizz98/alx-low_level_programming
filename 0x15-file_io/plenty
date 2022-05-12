@@ -1,0 +1,112 @@
+From Wikipedia, the free encyclopedia
+Jump to navigationJump to search
+"Regex" redirects here. For the comic book, see Re:Gex.
+
+The match results of the pattern
+(?<=\.) {2,}(?=[A-Z])
+At least two spaces are matched, but only if they occur directly after a period (.) and before an uppercase letter.
+A regular expression (shortened as regex or regexp;[1] sometimes referred to as rational expression[2][3]) is a sequence of characters that specifies a search pattern in text. Usually such patterns are used by string-searching algorithms for "find" or "find and replace" operations on strings, or for input validation. Regular expression techniques are developed in theoretical computer science and formal language theory.
+
+The concept of regular expressions began in the 1950s, when the American mathematician Stephen Cole Kleene formalized the concept of a regular language. They came into common use with Unix text-processing utilities. Different syntaxes for writing regular expressions have existed since the 1980s, one being the POSIX standard and another, widely used, being the Perl syntax.
+
+Regular expressions are used in search engines, in search and replace dialogs of word processors and text editors, in text processing utilities such as sed and AWK, and in lexical analysis. Most general-purpose programming languages support regex capabilities either natively or via libraries, including for example Python,[4] C,[5] C++,[6] Java,[7] and JavaScript.[8]
+
+
+Contents
+1	History
+2	Patterns
+3	Basic concepts
+4	Formal language theory
+4.1	Formal definition
+4.2	Expressive power and compactness
+4.3	Deciding equivalence of regular expressions
+5	Syntax
+5.1	Delimiters
+5.2	Standards
+5.2.1	POSIX basic and extended
+5.2.2	POSIX extended
+5.2.3	Character classes
+5.3	Perl and PCRE
+5.4	Lazy matching
+5.5	Possessive matching
+6	Patterns for non-regular languages
+7	Implementations and running times
+8	Unicode
+9	Uses
+10	Examples
+11	Induction
+12	See also
+13	Notes
+14	References
+15	External links
+History
+
+Stephen Cole Kleene, who introduced the concept
+Regular expressions originated in 1951, when mathematician Stephen Cole Kleene described regular languages using his mathematical notation called regular events.[9][10] These arose in theoretical computer science, in the subfields of automata theory (models of computation) and the description and classification of formal languages. Other early implementations of pattern matching include the SNOBOL language, which did not use regular expressions, but instead its own pattern matching constructs.
+
+Regular expressions entered popular use from 1968 in two uses: pattern matching in a text editor[11] and lexical analysis in a compiler.[12] Among the first appearances of regular expressions in program form was when Ken Thompson built Kleene's notation into the editor QED as a means to match patterns in text files.[11][13][14][15] For speed, Thompson implemented regular expression matching by just-in-time compilation (JIT) to IBM 7094 code on the Compatible Time-Sharing System, an important early example of JIT compilation.[16] He later added this capability to the Unix editor ed, which eventually led to the popular search tool grep's use of regular expressions ("grep" is a word derived from the command for regular expression searching in the ed editor: g/re/p meaning "Global search for Regular Expression and Print matching lines").[17] Around the same time when Thompson developed QED, a group of researchers including Douglas T. Ross implemented a tool based on regular expressions that is used for lexical analysis in compiler design.[12]
+
+Many variations of these original forms of regular expressions were used in Unix[15] programs at Bell Labs in the 1970s, including vi, lex, sed, AWK, and expr, and in other programs such as Emacs. Regexes were subsequently adopted by a wide range of programs, with these early forms standardized in the POSIX.2 standard in 1992.
+
+In the 1980s the more complicated regexes arose in Perl, which originally derived from a regex library written by Henry Spencer (1986), who later wrote an implementation of Advanced Regular Expressions for Tcl.[18] The Tcl library is a hybrid NFA/DFA implementation with improved performance characteristics. Software projects that have adopted Spencer's Tcl regular expression implementation include PostgreSQL.[19] Perl later expanded on Spencer's original library to add many new features.[20] Part of the effort in the design of Raku (formerly named Perl 6) is to improve Perl's regex integration, and to increase their scope and capabilities to allow the definition of parsing expression grammars.[21] The result is a mini-language called Raku rules, which are used to define Raku grammar as well as provide a tool to programmers in the language. These rules maintain existing features of Perl 5.x regexes, but also allow BNF-style definition of a recursive descent parser via sub-rules.
+
+The use of regexes in structured information standards for document and database modeling started in the 1960s and expanded in the 1980s when industry standards like ISO SGML (precursored by ANSI "GCA 101-1983") consolidated. The kernel of the structure specification language standards consists of regexes. Its use is evident in the DTD element group syntax. Prior to the use of regular expressions, many search languages allowed simple wildcards, for example "*" to match any sequence of characters, and "?" to match a single character. Relics of this can be found today in the glob syntax for filenames, and in the SQL LIKE operator.
+
+Starting in 1997, Philip Hazel developed PCRE (Perl Compatible Regular Expressions), which attempts to closely mimic Perl's regex functionality and is used by many modern tools including PHP and Apache HTTP Server.
+
+Today, regexes are widely supported in programming languages, text processing programs (particularly lexers), advanced text editors, and some other programs. Regex support is part of the standard library of many programming languages, including Java and Python, and is built into the syntax of others, including Perl and ECMAScript. Implementations of regex functionality is often called a regex engine, and a number of libraries are available for reuse. In the late 2010s, several companies started to offer hardware, FPGA,[22] GPU[23] implementations of PCRE compatible regex engines that are faster compared to CPU implementations.
+
+Patterns
+The phrase regular expressions, or regexes, is often used to mean the specific, standard textual syntax for representing patterns for matching text, as distinct from the mathematical notation described below. Each character in a regular expression (that is, each character in the string describing its pattern) is either a metacharacter, having a special meaning, or a regular character that has a literal meaning. For example, in the regex b., 'b' is a literal character that matches just 'b', while '.' is a metacharacter that matches every character except a newline. Therefore, this regex matches, for example, 'b%', or 'bx', or 'b5'. Together, metacharacters and literal characters can be used to identify text of a given pattern or process a number of instances of it. Pattern matches may vary from a precise equality to a very general similarity, as controlled by the metacharacters. For example, . is a very general pattern, [a-z] (match all lower case letters from 'a' to 'z') is less general and b is a precise pattern (matches just 'b'). The metacharacter syntax is designed specifically to represent prescribed targets in a concise and flexible way to direct the automation of text processing of a variety of input data, in a form easy to type using a standard ASCII keyboard.
+
+A very simple case of a regular expression in this syntax is to locate a word spelled two different ways in a text editor, the regular expression seriali[sz]e matches both "serialise" and "serialize". Wildcard characters also achieve this, but are more limited in what they can pattern, as they have fewer metacharacters and a simple language-base.
+
+The usual context of wildcard characters is in globbing similar names in a list of files, whereas regexes are usually employed in applications that pattern-match text strings in general. For example, the regex ^[ \t]+|[ \t]+$ matches excess whitespace at the beginning or end of a line. An advanced regular expression that matches any numeral is [+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?.
+
+
+Translating the Kleene star
+(s* means "zero or more of s")
+A regex processor translates a regular expression in the above syntax into an internal representation that can be executed and matched against a string representing the text being searched in. One possible approach is the Thompson's construction algorithm to construct a nondeterministic finite automaton (NFA), which is then made deterministic and the resulting deterministic finite automaton (DFA) is run on the target text string to recognize substrings that match the regular expression. The picture shows the NFA scheme N(s*) obtained from the regular expression s*, where s denotes a simpler regular expression in turn, which has already been recursively translated to the NFA N(s).
+
+Basic concepts
+A regular expression, often called a pattern, specifies a set of strings required for a particular purpose. A simple way to specify a finite set of strings is to list its elements or members. However, there are often more concise ways: for example, the set containing the three strings "Handel", "Händel", and "Haendel" can be specified by the pattern H(ä|ae?)ndel; we say that this pattern matches each of the three strings. However, there can be many ways to write a regular expression for the same set of strings: for example, (Hän|Han|Haen)del also specifies the same set of three strings in this example.
+
+Most formalisms provide the following operations to construct regular expressions.
+
+Boolean "or"
+A vertical bar separates alternatives. For example, gray|grey can match "gray" or "grey".
+Grouping
+Parentheses are used to define the scope and precedence of the operators (among other uses). For example, gray|grey and gr(a|e)y are equivalent patterns which both describe the set of "gray" or "grey".
+Quantification
+A quantifier after an element (such as a token, character, or group) specifies how many times the preceding element is allowed to repeat. The most common quantifiers are the question mark ?, the asterisk * (derived from the Kleene star), and the plus sign + (Kleene plus).
+?	The question mark indicates zero or one occurrences of the preceding element. For example, colou?r matches both "color" and "colour".
+*	The asterisk indicates zero or more occurrences of the preceding element. For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on.
++	The plus sign indicates one or more occurrences of the preceding element. For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac".
+{n}[24]	The preceding item is matched exactly n times.
+{min,}[24]	The preceding item is matched min or more times.
+{,max}[24]	The preceding item is matched up to max times.
+{min,max}[24]	The preceding item is matched at least min times, but not more than max times.
+Wildcard
+The wildcard . matches any character. For example, a.b matches any string that contains an "a", and then any character and then "b"; and a.*b matches any string that contains an "a", and then the character "b" at some later point.
+
+These constructions can be combined to form arbitrarily complex expressions, much like one can construct arithmetical expressions from numbers and the operations +, −, ×, and ÷. For example, H(ae?|ä)ndel and H(a|ae|ä)ndel are both valid patterns which match the same strings as the earlier example, H(ä|ae?)ndel.
+
+The precise syntax for regular expressions varies among tools and with context; more detail is given in § Syntax.
+
+Formal language theory
+Regular expressions describe regular languages in formal language theory. They have the same expressive power as regular grammars.
+
+Formal definition
+Regular expressions consist of constants, which denote sets of strings, and operator symbols, which denote operations over these sets. The following definition is standard, and found as such in most textbooks on formal language theory.[25][26] Given a finite alphabet Σ, the following constants are defined as regular expressions:
+
+(empty set) ∅ denoting the set ∅.
+(empty string) ε denoting the set containing only the "empty" string, which has no characters at all.
+(literal character) a in Σ denoting the set containing only the character a.
+Given regular expressions R and S, the following operations over them are defined to produce regular expressions:
+
+(concatenation) (RS) denotes the set of strings that can be obtained by concatenating a string accepted by R and a string accepted by S (in that order). For example, let R denote {"ab", "c"} and S denote {"d", "ef"}. Then, (RS) denotes {"abd", "abef", "cd", "cef"}.
+(alternation) (R|S) denotes the set union of sets described by R and S. For example, if R describes {"ab", "c"} and S describes {"ab", "d", "ef"}, expression (R|S) describes {"ab", "c", "d", "ef"}.
+(Kleene star) (R*) denotes the smallest superset of the set described by R that contains ε and is closed under string concatenation. This is the set of all strings that can be made by concatenating any finite number (including zero) of strings from the set described by R. For example, if R denotes {"0", "1"}, (R*) denotes the set of all finite binary strings (including the empty string). If R denotes {"ab", "c"}, (R*) denotes {ε, "ab", "c", "abab", "abc", "cab", "cc", "ababab", "abcab", ... }.
+To avoid parentheses it is assumed that the Kleene star has the highest priority, then concatenation and then alternation. If there is no ambiguity then parentheses may be omitted. For example, (ab)c can be written as abc, and a|(b(c*)) can be written as a|bc*. Many textbooks use the symbols ∪, +, or ∨ for alternation instead of the vertical bar.
+
+Examples:
