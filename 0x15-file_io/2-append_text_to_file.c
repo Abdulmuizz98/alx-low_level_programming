@@ -4,9 +4,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 /**
+ * append_text_to_file - appends text to an existing file
+ * @filename: the name of the existing file
+ * @text_content: the text to be appended
  *
- *
- *
+ * Return: 1 if successful, otherwise -1.
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
@@ -25,5 +27,4 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (-1);
 	close(fd);
 	return (1);
-
 }
