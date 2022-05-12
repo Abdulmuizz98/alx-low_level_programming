@@ -17,12 +17,14 @@ int create_file(const char *filename, char *text_content)
 	int fd;
 	int count = 0;
 	int write_bytes;
-
+	
+	if (filename == NULL)
+		return (-1);
 	fd = open(filename, O_WRONLY | O_TRUNC);
-	if (fd  == -1)
+	if (fd  == -1 )
 	{
 		fd = open(filename, O_CREAT | O_WRONLY, 0600);
-		if (fd == -1 || filename == NULL)
+		if (fd == -1)
 		{
 			exit(1);
 			return (-1);
