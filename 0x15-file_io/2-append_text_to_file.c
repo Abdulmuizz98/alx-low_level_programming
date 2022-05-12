@@ -17,7 +17,7 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (text_content != NULL)
 		while (text_content[count])
 			count++;
-	fd = open(filename, O_WRONLY);
+	fd = open(filename, O_APPEND | O_WRONLY);
 	if (fd == -1)
 		return (-1);
 	write_bytes = write(fd, text_content, count);
