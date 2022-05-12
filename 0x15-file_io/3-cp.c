@@ -23,12 +23,12 @@ int main(int ac, char **av)
 		exit(97);
 	}
 	res = copy(av[1], av[2]);
-	if (res == -2)
+	if (res == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
-	else if (res == -1)
+	else if (res == -2)
 	{
 		dprintf(2, "Error: Can't write to file %s\n", av[2]);
 		exit(99);
@@ -60,18 +60,14 @@ int copy(const char *file_from, const char *file_to)
 	fd_write = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	fd_read = open(file_from, O_RDONLY);
 
-	if (fd_read == -1)
-		return (-2);
-	if (fd_write == -1)
-		return (-1);
 	buf = malloc(sizeof(char) * 1024);
 	while ((read_bytes = read(fd_read, buf, 1024)) != 0)
 	{
-		if (read_bytes == -1)
-			return (-2);
-		write_bytes = write(fd_write, buf, read_bytes);
-		if (write_bytes == -1)
+		if (read_bytes == -1 || fd_read == -1)
 			return (-1);
+		write_bytes = write(fd_write, buf, read_bytes);
+		if (write_bytes == -1 || fd_write == -1)
+			return (-2);
 	}
 
 	free(buf);
