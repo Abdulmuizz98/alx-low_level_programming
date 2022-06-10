@@ -14,6 +14,8 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *trav, *new_node, *temp;
 	unsigned int i = 0;
 
+	if (h == NULL)
+		return (NULL);
 	/* traverse to the index */
 	trav = *h;
 	while (trav && i < idx)
