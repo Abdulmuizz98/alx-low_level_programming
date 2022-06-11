@@ -26,8 +26,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		trav = trav->next;
 		i++;
 	}
-	if (trav == NULL)
-		return (NULL);
 	trav = trav->next;
 	/*create the new node*/
 	new_node = malloc(sizeof(dlistint_t));
