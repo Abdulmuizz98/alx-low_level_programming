@@ -14,21 +14,21 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *trav, *new_node, *temp;
 	unsigned int i = 0;
 
-	/*if (h == NULL)
-		return (NULL);*/
-
 	if (idx == 0) /* Insert at the beginning */
 		return (add_dnodeint(h, n));
 	/* Insert anywhere else */
 	/* traverse to the index */
 	trav = *h;
-	while (trav && i < idx)
+	while (i < (idx - 1)) 
 	{
+		if (trav == NULL)
+			return (NULL);
 		trav = trav->next;
 		i++;
 	}
 	if (trav == NULL)
 		return (NULL);
+	trav = trav->next;
 	/*create the new node*/
 	new_node = malloc(sizeof(dlistint_t));
 	if (new_node == NULL)
