@@ -8,9 +8,9 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int idx = key_index(key);
+	unsigned long int idx = key_index((unsigned char *)key, ht->size);
 
-	return (add_head(array[idx], key, value) == NULL ? 0 : 1);
+	return (add_head(&(ht->array[idx]), key, value) == NULL ? 0 : 1);
 }
 
 /**
@@ -30,18 +30,12 @@ hash_node_t *add_head(hash_node_t **head, const char *k, const char *v)
 	new_node = malloc(sizeof(hash_node_t));
 	if (new_node == NULL)
 	{
-		dprintf(2, "Error: Can't malloc\n");
 		return (NULL);
 	}
-	new_node->key = k;
-	new_node->value = v;
-	if (*head) /* if head is not null */
-	{
-		/*make heads prev point to the new node*/
-		(*head)->prev = new_node;
-		/*make new node next point to head.*/
-		new_node->next = *head;
-	}
+	new_node->key = strdup(k);
+	new_node->value = strdup(v);
+	/*make new node next point to head.*/
+	new_node->next = *head;
 	/*change head to new node*/
 	*head = new_node;
 	return (*head);
