@@ -7,8 +7,8 @@
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	hash_node_t node;
-	unsigned long int i, idx = key_index((unsigned char *)key, ht->size);
+	hash_node_t *node;
+	unsigned long int idx = key_index((unsigned char *)key, ht->size);
 
 	if (ht == NULL || key == NULL || *key == '\0')
 		return (NULL);
