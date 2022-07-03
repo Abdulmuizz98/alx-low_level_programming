@@ -1,59 +1,53 @@
 #include "hash_tables.h"
-/**
- * hash_table_set - adds an element to the hash table
- * @key: the key of the element to be added.
- * @value: the value of the element to be added.
 
- * Return: if success - 1; otherwise 0.
+/**
+ * hash_table_set - Add or update an element in a hash table.
+ * @ht: A pointer to the hash table.
+ * @key: The key to add - cannot be an empty string.
+ * @value: The value associated with key.
+ *
+ * Return: Upon failure - 0.
+ *         Otherwise - 1.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int i, idx = key_index((unsigned char *)key, ht->size);
+	hash_node_t *new;
+	char *value_copy;
+	unsigned long int index, i;
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
 
-	for (i = idx; ht->array[i]; i++)
+	value_copy = strdup(value);
+	if (value_copy == NULL)
+		return (0);
+
+	index = key_index((const unsigned char *)key, ht->size);
+	for (i = index; ht->array[i]; i++)
 	{
 		if (strcmp(ht->array[i]->key, key) == 0)
 		{
 			free(ht->array[i]->value);
-			ht->array[i]->value = strdup(value);
-			if (ht->array[i]->value == NULL)
-				return (0);
+			ht->array[i]->value = value_copy;
 			return (1);
 		}
 	}
-	return (add_head(&(ht->array[idx]), key, value) == NULL ? 0 : 1);
-}
 
-/**
- * add_head - adds a new node at beginning of a list.
- * @head: the pointer to the head of the list
- * @k: the key of the node to be added.
- * @vL the value of the node to be added.
- *
- * Return: if success - the address of the new element;
- * otherwise - NULL;
- */
-hash_node_t *add_head(hash_node_t **head, const char *k, const char *v)
-{
-	hash_node_t *new_node;
-
-	/*create the new node*/
-	new_node = malloc(sizeof(hash_node_t));
-	if (new_node == NULL)
+	new = malloc(sizeof(hash_node_t));
+	if (new == NULL)
 	{
-		return (NULL);
+		free(value_copy);
+		return (0);
 	}
-	new_node->key = strdup(k);
-	new_node->value = strdup(v);
+	new->key = strdup(key);
+	if (new->key == NULL)
+	{
+		free(new);
+		return (0);
+	}
+	new->value = value_copy;
+	new->next = ht->array[index];
+	ht->array[index] = new;
 
-	if (new_node->key == NULL || new_node->value == NULL)
-		return (NULL);
-	/*make new node next point to head.*/
-	new_node->next = *head;
-	/*change head to new node*/
-	*head = new_node;
-	return (*head);
+	return (1);
 }
