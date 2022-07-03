@@ -1,6 +1,7 @@
 #include "hash_tables.h"
 /**
  * hash_table_get - retrieves a value associated with a key
+ * @ht: the pointer to the hash table.
  * @key: the key of the element to be retreived.
  *
  * Return: if success the value; otherwise NULL.
@@ -13,6 +14,8 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if (ht == NULL || key == NULL || *key == '\0')
 		return (NULL);
 
+	if (ht->size <= idx)
+		return (NULL);
 	node = ht->array[idx];
 	while (node && strcmp(node->key, key) != 0)
 		node = node->next;
