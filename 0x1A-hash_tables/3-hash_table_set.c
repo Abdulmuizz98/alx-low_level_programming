@@ -8,7 +8,6 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	char *val_cpy
 	unsigned long int i, idx = key_index((unsigned char *)key, ht->size);
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
