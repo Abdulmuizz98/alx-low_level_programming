@@ -1,5 +1,4 @@
 #include "hash_tables.h"
-#include <stdlib.h>
 /**
  * hash_table_create - create a hash table
  * @size: the size of the table to be created
@@ -21,7 +20,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (new_hash->array == NULL)
 	{
 		free(new_hash);
-		return NULL;
+		return (NULL);
 	}
 	return (new_hash);
 }
