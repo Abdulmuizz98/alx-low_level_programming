@@ -21,18 +21,18 @@ def island_perimeter(grid):
                 continue
 
             # Check for top perimeter if not in the top row.
-            if r != 0 and grid[r-1][c] == 0:
+            if r == 0 or grid[r-1][c] == 0:
                 count += 1
 
             # Check for bottom perimeter if not in the bottom row.
-            if r != rows-1 and grid[r+1][c] == 0:
+            if r == rows-1 or grid[r+1][c] == 0:
                 count += 1
 
             # Check for left perimeter if not in the first column.
-            if c != 0 and grid[r][c-1] == 0:
+            if c == 0 or grid[r][c-1] == 0:
                 count += 1
 
             # Check for right perimeter if not in the last column.
-            if c != cols-1 and grid[r][c+1] == 0:
+            if c == cols-1 or grid[r][c+1] == 0:
                 count += 1
     return count
