@@ -1,0 +1,33 @@
+#include "main.h"
+
+/**
+ * print_triange - prints a triange on the terminal.
+ *
+ * @n: the lenght of the triange.
+ *
+ * Return: Nothing..
+ */
+void print_triange(int n)
+{
+	int space, tri, i = 0;
+
+	if (n < 1)
+		_putchar('\n');
+
+	while (i <= n)
+	{
+		tri = n;
+		space = n - tri;
+
+		while (space--)
+		{
+			_putchar(' ');
+		}
+		while (tri--)
+		{
+			_putchar('#');
+		}
+		_putchar('\n');
+		i++;
+	}
+}
