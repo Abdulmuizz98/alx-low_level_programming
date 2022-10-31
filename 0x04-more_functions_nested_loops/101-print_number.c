@@ -10,7 +10,7 @@
  */
 void print_number(int n)
 {
-	int dup = abs(n);
+	int dup = n;
 	int div = 1;
 
 	if (n == 0)
@@ -27,12 +27,11 @@ void print_number(int n)
 	if (n < 0)
 	{
 		_putchar('-');
-		n = abs(n);
 	}
 
 	while (n != 0)
 	{
-		_putchar((n / div) + 48);
+		_putchar(abs(n / div) + 48);
 		n %= div;
 		div /= 10;
 	}
