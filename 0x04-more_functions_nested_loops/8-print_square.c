@@ -11,7 +11,7 @@ void print_square(int n)
 {
 	int squ = n;
 
-	if (n == 0)
+	if (n < 1)
 		_putchar('\n');
 
 	while (n-- > 0)
