@@ -32,6 +32,8 @@ void print_number(int n)
 	while (n != 0)
 	{
 		_putchar(abs(n / div) + 48);
+		if (n == 10) 
+			_putchar('0');
 		n %= div;
 		div /= 10;
 	}
