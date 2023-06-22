@@ -4,13 +4,13 @@
 #include <time.h>
 
 /**
- * main - Crackme
+ * main - Entry point to the keygen
  *
  * Return: Alway 0.
  */
-int main()
+int main(void)
 {
-	const int max = 2772/ 97 + 1;
+	const int max = 2772 / 97 + 1;
 	int sum = 0;
 	char list[max];
 	char character;
