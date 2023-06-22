@@ -22,7 +22,7 @@ int is_number(char c)
  */
 int _atoi(char *s)
 {
-	int i, place = 0, number = 0, minus_count = 0, multiplier;
+	int i, count = 0, place = 1, number = 0, minus_count = 0, multiplier;
 
 	/* Use number of consecutive digits to determine highest plave value*/
 	for (i = 0; *(s + i) != '\0'; i++)
@@ -31,41 +31,33 @@ int _atoi(char *s)
 		{
 			if (i > 0 && is_number(s[i - 1]))
 				break;
-		}
-		else
-		{
-			place++;
-		}
-	}
 
-	i = --place;
-	place = 1;
-	
-	while(i)
-	{
-		place *= 10;
-		i--;
-	}
-
-	/* Get all digits and determine negative numbers */
-	for (i = 0; *(s + i) != '\0'; i++)
-	{
-		if (!is_number(s[i]))
-		{
-			if (i > 0 && is_number(s[i - 1]))
-				break;
 			if (s[i] == '-')
 				minus_count++;
 		}
 		else
 		{
-			number += (s[i] - 48) * place;
-			place /= 10;
+			count++;
 		}
 	}
+
+	/* Get highest place value multiplier*/
+	for (i = count - 1; i > 0; i--)
+		place *= 10;
 
 	/* Determine negative or positive */
 	multiplier = (minus_count % 2) == 0 ? 1 : -1;
 
-	return (number * multiplier);
+	/* Get all digits and determine negative numbers */
+	for (i = 0; count > 0; i++)
+	{
+		if (is_number(s[i]))
+		{
+			number += (s[i] - 48) * place * multiplier;
+			place /= 10;
+			count--;
+		}
+	}
+
+	return (number);
 }
