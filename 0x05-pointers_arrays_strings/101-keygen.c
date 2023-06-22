@@ -10,9 +10,8 @@
  */
 int main(void)
 {
-	const int max = 2772 / 97 + 1;
 	int sum = 0;
-	char list[max];
+	char list[2772 / 97 + 1];
 	char character;
 	int i = 0, trial = 1;
 
