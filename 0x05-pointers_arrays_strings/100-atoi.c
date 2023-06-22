@@ -22,11 +22,25 @@ int is_number(char c)
  */
 int _atoi(char *s)
 {
-	int i, j = 0, place = 1, number = 0, minus_count = 0, multiplier;
-	const int len = strlen(s);
-	int list[len];
+	int i, place = 1, number = 0, minus_count = 0, multiplier;
 
-	/* Get all digits */
+	/* Use number of consecutive digits to determine highest plave value*/
+	for (i = 0; *(s + i) != '\0'; i++)
+	{
+		if (!is_number(s[i]))
+		{
+			if (i > 0 && is_number(s[i - 1]))
+				break;
+		}
+		else
+		{
+			place *= 10;
+		}
+	}
+
+	place /= 10;
+
+	/* Get all digits and determine negative numbers */
 	for (i = 0; *(s + i) != '\0'; i++)
 	{
 		if (!is_number(s[i]))
@@ -38,15 +52,9 @@ int _atoi(char *s)
 		}
 		else
 		{
-			list[j++] = s[i] - 48;
+			number += (s[i] - 48) * place;
+			place /= 10;
 		}
-	}
-
-	/* Construct the number */
-	for (--j ; j >= 0; j--)
-	{
-		number += list[j] * place;
-		place *= 10;
 	}
 
 	/* Determine negative or positive */
