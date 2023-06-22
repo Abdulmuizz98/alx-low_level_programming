@@ -8,7 +8,8 @@
  *
  * Return: 1 if a number, otherwise 0.
  */
-int is_number(char c){
+int is_number(char c)
+{
 	return ((c > 47 && c < 58) ? 1 : 0);
 }
 
@@ -25,14 +26,14 @@ int _atoi(char *s)
 	const int len = strlen(s);
 	int list[len];
 
-	// Get all digits
+	/* Get all digits */
 	for (i = 0; *(s + i) != '\0'; i++)
 	{
 		if (!is_number(s[i]))
 		{
 			if (i > 0 && is_number(s[i - 1]))
 				break;
-            if (s[i] == '-')
+			if (s[i] == '-')
 				minus_count++;
 		}
 		else
@@ -41,14 +42,14 @@ int _atoi(char *s)
 		}
 	}
 
-	// Construct the number
-	for(--j ; j >= 0; j--)
+	/* Construct the number */
+	for (--j ; j >= 0; j--)
 	{
 		number += list[j] * place;
 		place *= 10;
 	}
 
-	// Determine negative or positive
+	/* Determine negative or positive */
 	multiplier = (minus_count % 2) == 0 ? 1 : -1;
 
 	return (number * multiplier);
