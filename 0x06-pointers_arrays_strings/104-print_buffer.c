@@ -40,7 +40,7 @@ void print_last_line(int j, char *store)
 		printf("  ");
 		j++;
 	}
-	print_string(store, (i % 10) + 1);
+	print_bytes(store, (i % 10) + 1);
 	printf("\n");
 }
 
@@ -74,7 +74,7 @@ void print_buffer(char *b, int size)
 			/* Print line of 10 characters */
 			if (i)
 			{
-				print_string(store, 10);
+				print_bytes(store, 10);
 				printf("\n");
 			}
 			/* Print position of first byte of the line*/
@@ -86,7 +86,7 @@ void print_buffer(char *b, int size)
 
 		/* For last line add spaces for tabulation, then print */
 		if (i + 1 == size && (i % 10) != 0)
-			print_last_string(i, store);
+			print_last_line(i, store);
 
 		i++;
 	}
