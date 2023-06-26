@@ -18,7 +18,7 @@ int get_place(int n)
 	}
 
 	/* Get highest place value multiplier */
-    for ( --count;  count > 0; count--)
+	for (--count; count > 0; count--)
 		place *= 10;
 
 	return (place);
@@ -49,7 +49,7 @@ void print_number(int n)
 	}
 
 	place = get_place(n);
-	
+
 	while (n != 0)
 	{
 		if (n / place > 0)
