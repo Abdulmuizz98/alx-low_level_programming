@@ -40,6 +40,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	if (size_r  <= n1_len || size_r <= n2_len)
 		return (0);
 
+	memset(r, '\0', size_r);
 	for (i = n1_len - 1, j = n2_len - 1, k = 0; i >= 0 && j >= 0 ; i--, j--, k++)
 	{
 		res = chr_to_int(*(n1 + i)) + chr_to_int(*(n2 + j)) + carry;
