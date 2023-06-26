@@ -14,7 +14,7 @@ int chr_to_int(char chr)
 
 /**
  * int_to_chr - Converts int to char.
- * @int: the int to be converted
+ * @n: the int to be converted
  *
  * Return: the resulting char.
  */
@@ -55,22 +55,22 @@ char *rev_str(char *str)
  * @carry: the number carried forward
  * @n: the char array holding the larger number
  * @r: the char array to store the result
- * @k: the index of n to start addition from
- * @k: the starting index to store the unparallel additions
+ * @index: the pointer to index of n to start addition from
+ * @k: the pointer to the starting index of r to store the unparallel additions
  *
  * Return: the number to carry forward after unparallel add.
  */
-int add_unparallel(int carry, char *n, char *r, int index, int k)
+int add_unparallel(int carry, char *n, char *r, int *index, int *k)
 {
 	int remainder, res;
 
-	for (; index >= 0; index--, k++)
+	for (; *index >= 0; (*index)--, (*k)++)
 	{
-		res = chr_to_int(*(n + index)) + carry;
+		res = chr_to_int(*(n + (*index))) + carry;
 		remainder = res % 10;
 		carry = res / 10;
 
-		*(r + k) = int_to_chr(remainder);
+		*(r + (*k)) = int_to_chr(remainder);
 	}
 
 	return (carry);
@@ -92,7 +92,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 	int n1_len = strlen(n1);
 	int n2_len = strlen(n2);
-	int i, j, k, res, carry, remainder;
+	int i, j, k, res, carry = 0, remainder;
 
 	if (size_r  <= n1_len || size_r <= n2_len)
 		return (0);
@@ -109,9 +109,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	}
 
 	if (n1_len > n2_len)
-		carry = add_unparallel(carry, n1, r, i, k);
+		carry = add_unparallel(carry, n1, r, &i, &k);
 	else if (n1_len < n2_len)
-		carry = add_unparallel(carry, n2, r, j, k);
+		carry = add_unparallel(carry, n2, r, &j, &k);
 
 	if (carry)
 	{
