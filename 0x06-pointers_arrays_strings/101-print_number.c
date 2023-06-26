@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * get_place - get the highest place value of a number.
  * @n: The number to get its place value.
@@ -8,15 +8,21 @@
  */
 int get_place(int n)
 {
-	int place = 1;
+	int place = 1, count = 0;
 
-	while (n > 9)
+	/* Count digits */
+	while (n != 0)
 	{
-		place *= 10;
 		n /= 10;
-}
+		count++;
+	}
+
+	/* Get highest place value multiplier */
+    for ( --count;  count > 0; count--)
+		place *= 10;
 
 	return (place);
+
 }
 
 
@@ -43,7 +49,7 @@ void print_number(int n)
 	}
 
 	place = get_place(n);
-
+	
 	while (n != 0)
 	{
 		if (n / place > 0)
@@ -56,5 +62,4 @@ void print_number(int n)
 
 	if (temp % 10 == 0)
 		_putchar(0 + 48);
-
 }
