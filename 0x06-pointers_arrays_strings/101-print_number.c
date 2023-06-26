@@ -19,6 +19,7 @@ int get_place(int n)
 	return (place);
 }
 
+
 /**
  * print_number - prints a number
  * @n: The number to print.
@@ -27,7 +28,7 @@ int get_place(int n)
  */
 void print_number(int n)
 {
-	int place;
+	int place, temp = n;
 
 	if (n == 0)
 	{
@@ -45,9 +46,15 @@ void print_number(int n)
 
 	while (n != 0)
 	{
-		_putchar((n / place) + 48);
+		if (n / place > 0)
+			_putchar((n / place) + 48);
+		else
+			_putchar((n / place * -1) + 48);
 		n %= place;
 		place /= 10;
 	}
+
+	if (temp % 10 == 0)
+		_putchar(0 + 48);
 
 }
