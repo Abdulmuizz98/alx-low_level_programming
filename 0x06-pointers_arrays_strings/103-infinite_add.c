@@ -37,8 +37,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int n2_len = strlen(n2);
 	int i, j, k, res, carry = 0, remainder;
 
-	memset(r, '\0', 100);
-
 	if (size_r  <= n1_len || size_r <= n2_len)
 		return (0);
 
