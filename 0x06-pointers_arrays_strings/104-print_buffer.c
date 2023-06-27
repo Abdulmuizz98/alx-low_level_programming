@@ -19,6 +19,7 @@ void print_bytes(char *c, int len)
 		else
 			putchar('.');
 	}
+	putchar('\n');
 }
 
 
@@ -35,13 +36,13 @@ void print_last_line(int j, char *store)
 
 	while (j % 10)
 	{
-		if (j % 2 == 0 && j != i + 1)
+		if (j % 2 == 0)
 			printf(" ");
 		printf("  ");
 		j++;
 	}
-	print_bytes(store, (i % 10) + 1);
-	printf("\n");
+	printf(" ");
+	print_bytes(store, (i % 10));
 }
 
 
@@ -75,7 +76,6 @@ void print_buffer(char *b, int size)
 			if (i)
 			{
 				print_bytes(store, 10);
-				printf("\n");
 			}
 			/* Print position of first byte of the line*/
 			printf("%08x: ", i);
@@ -85,8 +85,13 @@ void print_buffer(char *b, int size)
 		printf("%02x", b[i]);
 
 		/* For last line add spaces for tabulation, then print */
-		if (i + 1 == size && (i % 10) != 0)
-			print_last_line(i, store);
+		if (i + 1 == size && ((i + 1) % 10 == 0)) /* Print less than 10 char */
+		{
+			printf(" ");
+			print_bytes(store, 10);
+		}
+		else if (i + 1 == size) /* Print full last line */
+			print_last_line(i + 1, store);
 
 		i++;
 	}
