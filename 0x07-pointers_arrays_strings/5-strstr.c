@@ -3,9 +3,9 @@
 /**
  * *_strstr - Locate a substring..
  * @haystack: string checked for matching substring.
- * @needle: substring that is found. 
+ * @needle: substring that is found.
  *
- * Return: A pointer to the beginning of the located 
+ * Return: A pointer to the beginning of the located
  * substrings, otherwise NULL (if not found)
  */
 char *_strstr(char *haystack, char *needle)
@@ -15,19 +15,19 @@ char *_strstr(char *haystack, char *needle)
 	while (*haystack)
 	{
 		i = 0;
-		
+
 		if (haystack[i] == needle[i])
 		{
-			do{
+			do {
 				if (needle[i + 1] == '\0')
-					return haystack;
-				
+					return (haystack);
+
 				i++;
 
-			}while (haystack[i] == needle[i]);
+			} while (haystack[i] == needle[i]);
 		}
-		
-		haystack++; 
+
+		haystack++;
 	}
 	return (0);
 }

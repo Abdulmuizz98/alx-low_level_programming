@@ -3,7 +3,7 @@
 /**
  * _strspn - Gets the length of a prefix substring.
  * @s: string checked for number of bytes
- * @accept: string with chars that are accepted 
+ * @accept: string with chars that are accepted
  *
  * Return: Number of bytes in initial segment of s
  * which consists only of bytes from accept.
@@ -12,7 +12,7 @@ unsigned int _strspn(char *s, char *accept)
 {
 	int j;
 	unsigned int byt = 0;
-	
+
 	while (*s != ' ')
 	{
 		for (j = 0; accept[j]; j++)
@@ -21,7 +21,7 @@ unsigned int _strspn(char *s, char *accept)
 			{
 				byt++;
 				break;
-			} 
+			}
 		}
 		s++;
 	}
