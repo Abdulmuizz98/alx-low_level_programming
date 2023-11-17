@@ -10,7 +10,7 @@ int main(void)
 	double n1 = 1;
 	double n2 = 2;
 	double sum;
-	int i = 3;
+	int i = 1;
 
 	printf("1, 2,");
 
