@@ -34,9 +34,9 @@ int main(void)
 		tn2 = tsum;
 
 		if (tsum)
-			printf(" %d%d%d", tsum, rsum, sum);
+			printf(" %d%09d%09d", tsum, rsum, sum);
 		else if (rsum)
-			printf(" %d%d", rsum, sum);
+			printf(" %d%09d", rsum, sum);
 		else
 			printf(" %d", sum);
 
